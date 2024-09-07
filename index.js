@@ -10,10 +10,10 @@ const { error } = require("console")
 app.use(express.json())
 const dbPath = path.join(__dirname , "gate.db")
 let db = null;
-app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from frontend running at localhost:3000
-}));
-
+app.use(cors());
+// {
+//   origin: 'http://localhost:3000', // Allow requests from frontend running at localhost:3000
+// }
 const initilizeServerAndDB = async () => {
     try{
         db = await open({
@@ -23,6 +23,7 @@ const initilizeServerAndDB = async () => {
         app.listen( process.env.PORT ||3001 , () => {
             console.log("running http://localhost:3001")
         })
+        
     }catch(e){
         console.log(`DB Error${e.message}`)
        process.exit(1)
