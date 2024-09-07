@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express()
 const {open} = require("sqlite")
-const bcrypt = require("bcrypt")
+const bcrypt = require('bcryptjs');
+
 const sqlite3 = require("sqlite3")
 const jwt = require("jsonwebtoken");
 const path = require("path")
@@ -23,7 +24,7 @@ const initilizeServerAndDB = async () => {
         app.listen( process.env.PORT ||3001 , () => {
             console.log("running http://localhost:3001")
         })
-        
+
     }catch(e){
         console.log(`DB Error${e.message}`)
        process.exit(1)
